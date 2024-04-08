@@ -1,7 +1,10 @@
+food/com/br/register/dto/ProductDto.class
+food/com/br/register/model/User.class
+food/com/br/register/repository/UserRepository.class
+food/com/br/register/dto/AutenticationDto.class
+food/com/br/register/service/ProductService.class
 food/com/br/register/controller/ProductController.class
+food/com/br/register/service/AutenticationService.class
 food/com/br/register/repository/ProductRepository.class
-food/com/br/register/controller/HelloController.class
 food/com/br/register/model/Product.class
 food/com/br/register/RegisterApplication.class
-food/com/br/register/dto/DataProductDto.class
-food/com/br/register/service/ProductService.class

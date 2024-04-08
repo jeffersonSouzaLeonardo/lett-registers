@@ -1,7 +1,10 @@
-/home/linux/projetos/restaurante/register/src/main/java/food/com/br/register/model/Product.java
-/home/linux/projetos/restaurante/register/src/main/java/food/com/br/register/service/ProductService.java
-/home/linux/projetos/restaurante/register/src/main/java/food/com/br/register/repository/ProductRepository.java
-/home/linux/projetos/restaurante/register/src/main/java/food/com/br/register/RegisterApplication.java
-/home/linux/projetos/restaurante/register/src/main/java/food/com/br/register/dto/DataProductDto.java
-/home/linux/projetos/restaurante/register/src/main/java/food/com/br/register/controller/ProductController.java
-/home/linux/projetos/restaurante/register/src/main/java/food/com/br/register/controller/HelloController.java
+/home/linux/projetos/lett/register/src/main/java/food/com/br/register/dto/ProductDto.java
+/home/linux/projetos/lett/register/src/main/java/food/com/br/register/service/AutenticationService.java
+/home/linux/projetos/lett/register/src/main/java/food/com/br/register/model/User.java
+/home/linux/projetos/lett/register/src/main/java/food/com/br/register/controller/ProductController.java
+/home/linux/projetos/lett/register/src/main/java/food/com/br/register/dto/AutenticationDto.java
+/home/linux/projetos/lett/register/src/main/java/food/com/br/register/service/ProductService.java
+/home/linux/projetos/lett/register/src/main/java/food/com/br/register/RegisterApplication.java
+/home/linux/projetos/lett/register/src/main/java/food/com/br/register/model/Product.java
+/home/linux/projetos/lett/register/src/main/java/food/com/br/register/repository/UserRepository.java
+/home/linux/projetos/lett/register/src/main/java/food/com/br/register/repository/ProductRepository.java

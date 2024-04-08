@@ -1,6 +1,7 @@
 package food.com.br.register.controller;
 
-import food.com.br.register.dto.DataProductDto;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import food.com.br.register.dto.ProductDto;
 import food.com.br.register.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +21,15 @@ public class ProductController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity post(@RequestBody @Valid DataProductDto dataProductDto, UriComponentsBuilder uriComponentsBuilder){
-
-        var uri = uriComponentsBuilder.path("/product/{id}").buildAndExpand(dataProductDto.id()).toUri();
-        var product = productService.save(dataProductDto);
-        return ResponseEntity.created(uri).body(new DataProductDto(product));
+    public ResponseEntity post(@RequestBody @Valid ProductDto productDto, UriComponentsBuilder uriComponentsBuilder){
+        var uri = uriComponentsBuilder.path("/product/{id}").buildAndExpand(productDto.id()).toUri();
+        var product = productService.save(productDto);
+        return ResponseEntity.created(uri).body(new ProductDto(product));
     }
 
     @GetMapping()
-    public ResponseEntity<Page<DataProductDto>> get(Pageable pageable) {
-        var dataProductDtos = productService.findAll(pageable).map(DataProductDto::new);
+    public ResponseEntity<Page<ProductDto>> get(Pageable pageable) {
+        var dataProductDtos = productService.findAll(pageable).map(ProductDto::new);
         return ResponseEntity.ok(dataProductDtos);
     }
 
@@ -48,10 +48,10 @@ public class ProductController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity edit(@RequestBody @Valid DataProductDto dataProductDto, UriComponentsBuilder uriComponentsBuilder) {
-        var uri = uriComponentsBuilder.path("/product/{id}").buildAndExpand(dataProductDto.id()).toUri();
-        var product = productService.edit(dataProductDto);
-        return ResponseEntity.created(uri).body(new DataProductDto(product));
+    public ResponseEntity edit(@RequestBody @Valid ProductDto productDto, UriComponentsBuilder uriComponentsBuilder) throws JsonMappingException {
+        var uri = uriComponentsBuilder.path("/product").buildAndExpand(productDto.id()).toUri();
+        var product = productService.edit(productDto);
+        return ResponseEntity.created(uri).body(new ProductDto(product));
     }
 
 }

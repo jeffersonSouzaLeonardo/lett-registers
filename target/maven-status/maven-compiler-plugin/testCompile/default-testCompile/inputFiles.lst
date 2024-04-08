@@ -1,1 +1,3 @@
-/home/linux/projetos/restaurante/register/src/test/java/food/com/br/register/RegisterApplicationTests.java
+/home/linux/projetos/lett/register/src/test/java/food/com/br/register/RegisterApplicationTests.java
+/home/linux/projetos/lett/register/src/test/java/food/com/br/register/repository/UserRepositoryTest.java
+/home/linux/projetos/lett/register/src/test/java/food/com/br/register/controller/ProductControllerTest.java

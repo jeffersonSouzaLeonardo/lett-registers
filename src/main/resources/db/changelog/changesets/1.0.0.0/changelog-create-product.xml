@@ -5,8 +5,8 @@
         xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.21.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-    <changeSet id="1" author="Jefferson">
-        <createTable tableName="product">
+    <changeSet id="create-productEntity" author="Jefferson">
+        <createTable tableName="productEntity">
             <column name="id" autoIncrement="true" type="bigint">
                 <constraints primaryKey="true" nullable="false" />
             </column>

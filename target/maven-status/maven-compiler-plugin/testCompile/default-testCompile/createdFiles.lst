@@ -1,1 +1,3 @@
 food/com/br/register/RegisterApplicationTests.class
+food/com/br/register/repository/UserRepositoryTest.class
+food/com/br/register/controller/ProductControllerTest.class

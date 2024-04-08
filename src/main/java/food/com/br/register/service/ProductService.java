@@ -1,8 +1,11 @@
 package food.com.br.register.service;
 
-import food.com.br.register.dto.DataProductDto;
-import food.com.br.register.model.Product;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import food.com.br.register.dto.ProductDto;
+import food.com.br.register.model.ProductEntity;
 import food.com.br.register.repository.ProductRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,20 +16,21 @@ import java.util.Optional;
 
 
 @Service
+@Slf4j
 public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    public Product save(DataProductDto dataProductDto){
-        var product = new Product(dataProductDto);
+    public ProductEntity save(ProductDto productDto){
+        var product = new ProductEntity(productDto);
         return productRepository.saveAndFlush(product);
     }
 
-    public Page<Product> findAll(@PageableDefault(size = 10, sort = {"description"}) Pageable pageable){
+    public Page<ProductEntity> findAll(@PageableDefault(size = 10, sort = {"description"}) Pageable pageable){
         return productRepository.findAll(pageable);
     }
 
-    public Optional<Product> findId(Long id){
+    public Optional<ProductEntity> findId(Long id){
         return productRepository.findById(id);
     }
 
@@ -34,12 +38,16 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
-    public Product edit(DataProductDto dataProductDto){
-        var product = productRepository.findById(dataProductDto.id()).get();
-        product.setIdCategory(dataProductDto.idCategory());
-        product.setDescription(dataProductDto.description());
-        product.setStatus(dataProductDto.status());
-        productRepository.saveAndFlush(product);
+    public ProductEntity edit(ProductDto productDto) throws JsonMappingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        var product = productRepository.findById(productDto.id()).get();
+        if (product != null){
+            product = objectMapper.updateValue(product, productDto);
+            productRepository.saveAndFlush(product);
+        }else {
+            log.info("Produto não encontrado para Edição com o ID: " + productDto.id() );
+        }
+
         return product;
     }
 
