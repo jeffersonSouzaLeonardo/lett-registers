@@ -1,5 +1,6 @@
 package food.com.br.register.model;
 
+import food.com.br.register.dto.CategoryDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,4 +20,8 @@ public class CategoryEntity {
     private Long id;
 
     private String description;
+
+    public CategoryEntity(CategoryDto categoryDto) {
+        this.description = categoryDto.description();
+    }
 }
