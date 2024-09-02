@@ -1,7 +1,10 @@
 package food.com.br.register.controller;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
+import food.com.br.register.dto.CategoryDto;
 import food.com.br.register.dto.ProductDto;
+import food.com.br.register.model.CategoryEntity;
+import food.com.br.register.service.CategoryService;
 import food.com.br.register.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,23 +37,23 @@ public class CategoryController {
 
     @GetMapping(path ="/{id}")
     public ResponseEntity get(@PathVariable Long id) {
-        var product = productService.findId(id);
+        var product = categoryService.findById(id);
         return ResponseEntity.ok(product);
     }
 
     @DeleteMapping(path ="/{id}")
     @Transactional
     public ResponseEntity delete(@PathVariable Long id) {
-        productService.delete(id);
+        categoryService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping
     @Transactional
-    public ResponseEntity edit(@RequestBody @Valid ProductDto productDto, UriComponentsBuilder uriComponentsBuilder) throws JsonMappingException {
-        var uri = uriComponentsBuilder.path("/product").buildAndExpand(productDto.id()).toUri();
-        var product = productService.edit(productDto);
-        return ResponseEntity.created(uri).body(new ProductDto(product));
+    public ResponseEntity edit(@RequestBody @Valid CategoryDto categoryDto, UriComponentsBuilder uriComponentsBuilder) throws JsonMappingException {
+        var uri = uriComponentsBuilder.path("/category").buildAndExpand(categoryDto.id()).toUri();
+        var category = categoryService.edit(categoryDto);
+        return ResponseEntity.created(uri).body(new CategoryDto((CategoryEntity) category));
     }
 
 }

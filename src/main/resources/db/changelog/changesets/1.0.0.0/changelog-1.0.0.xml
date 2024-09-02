@@ -6,7 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.21.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <include file="db/changelog/changesets/1.0.0.0/changelog-create-productEntity.xml" />
+    <include file="db/changelog/changesets/1.0.0.0/changelog-create-product.xml" />
 
     <include file="db/changelog/changesets/1.0.0.0/changelog-create-user.xml" />
 
